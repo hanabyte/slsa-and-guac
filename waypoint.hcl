@@ -22,6 +22,8 @@ app "slsa-and-guac-app" {
         }
         registry {
             use "docker" {
+                image     = "nginx"
+                tag        = "latest"
             }
         }
     }
