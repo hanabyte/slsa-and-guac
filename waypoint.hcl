@@ -17,14 +17,8 @@ variable "registry" {
 app "slsa-and-guac-app" {
     build {
         use "docker-pull" {
-            image     = "gcr.io/hashitalks-2022/slsa-and-guac"
+            image     = "nginx"
             tag        = "latest"
-        }
-        registry {
-            use "docker" {
-                image     = "gcr.io/hashitalks-2022/slsa-and-guac"
-                tag       = "latest"
-            }
         }
     }
     deploy {
