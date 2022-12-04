@@ -16,10 +16,7 @@ variable "registry" {
 
 app "slsa-and-guac-app" {
     build {
-        use "docker" {
-            buildkit           = false
-            disable_entrypoint = true
-        }
+        use "docker" {}
         registry {
             use "docker" {
                 image     = "gcr.io/hashitalks-2022/slsa-and-guac"
