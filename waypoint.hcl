@@ -29,9 +29,7 @@ app "slsa-and-guac-app" {
         }
     }
     deploy {
-        use "kubernetes-apply" { //possibly use kubernetes-apply here
-            path        = templatedir("${path.project}/k8s")
-            prune_label = "hashitalks-app"
+        use "kubernetes" {
         }
     }
     #release {
