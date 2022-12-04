@@ -16,14 +16,9 @@ variable "registry" {
 
 app "slsa-and-guac-app" {
     build {
-        use "docker" {
-            disable_entrypoint = true
-        }
-        registry {
-            use "docker" {
-                image     = "${var.registry}/slsa-and-guac"
-                tag        = "latest"
-            }
+        use "docker-pull" {
+            image     = "${var.registry}/slsa-and-guac"
+            tag        = "latest"
         }
     }
     deploy {
