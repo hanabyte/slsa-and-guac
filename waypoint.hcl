@@ -5,14 +5,14 @@ variable "registry" {
     default = "gcr.io/hashitalks-2022"
 }
 
-runner {
-    enabled = true
+#runner {
+#    enabled = true
 
-    data_source "git" {
-        url  = "https://github.com/hanabyte/slsa-and-guac.git"
-        path = "/"
-    }
-}
+#    data_source "git" {
+#        url  = "https://github.com/hanabyte/slsa-and-guac.git"
+#        path = "/"
+#    }
+#}
 
 app "slsa-and-guac-app" {
     build {
@@ -28,7 +28,7 @@ app "slsa-and-guac-app" {
     }
     deploy {
         use "kubernetes-apply" { //possibly use kubernetes-apply here
-            path        = templatedir("${path.pwd}/k8s")
+            path        = templatedir("${path.project}/k8s")
             prune_label = "hashitalks-app"
         }
     }
