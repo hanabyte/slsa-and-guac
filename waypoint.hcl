@@ -17,6 +17,7 @@ variable "registry" {
 app "slsa-and-guac-app" {
     build {
         use "docker" {
+            buildkit           = false
             disable_entrypoint = true
         }
         registry {
