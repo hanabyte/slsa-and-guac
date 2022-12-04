@@ -20,6 +20,10 @@ app "slsa-and-guac-app" {
             image     = "nginx"
             tag        = "latest"
         }
+        registry {
+            use "docker" {
+            }
+        }
     }
     deploy {
         use "kubernetes-apply" { //possibly use kubernetes-apply here
