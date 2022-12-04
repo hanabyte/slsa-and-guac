@@ -9,7 +9,7 @@ runner {
     enabled = true
 
     data_source "git" {
-        url  = "https://github.com/hashicorp/waypoint-examples.git"
+        url  = "https://github.com/hanabyte/slsa-and-guac.git"
         path = "/"
     }
 }
