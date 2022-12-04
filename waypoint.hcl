@@ -20,6 +20,12 @@ app "slsa-and-guac-app" {
             image     = "gcr.io/hashitalks-2022/slsa-and-guac"
             tag        = "latest"
         }
+        registry {
+            use "docker" {
+                image     = "gcr.io/hashitalks-2022/slsa-and-guac"
+                tag       = "latest"
+            }
+        }
     }
     deploy {
         use "kubernetes-apply" { //possibly use kubernetes-apply here
