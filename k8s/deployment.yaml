@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hashitalks-deployment
+  labels:
+    app: hashitalks-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hashitalks-app
+  template:
+    metadata:
+      labels:
+        app: hashitalks-app
+    spec:
+      containers:
+        - name: hashitalks
+          image: gcr.io/hashitalks-2022/slsa-and-guac:latest
+          ports:
+            - name: http
+              containerPort: 80
+          imagePullPolicy: IfNotPresent
