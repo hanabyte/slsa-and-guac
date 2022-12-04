@@ -20,12 +20,6 @@ app "slsa-and-guac-app" {
             buildkit           = false
             disable_entrypoint = true
         }
-        registry {
-            use "docker" {
-                image     = "gcr.io/hashitalks-2022/slsa-and-guac"
-                tag       = "latest"
-            }
-        }
     }
     deploy {
         use "kubernetes" {
