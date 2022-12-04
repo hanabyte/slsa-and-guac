@@ -20,6 +20,12 @@ app "slsa-and-guac-app" {
             image     = "${var.registry}/slsa-and-guac"
             tag        = "latest"
         }
+        registry {
+            use "docker" {
+                image     = "${var.registry}/slsa-and-guac"
+                tag        = "latest"
+            }
+        }
     }
     deploy {
         use "kubernetes-apply" { //possibly use kubernetes-apply here
