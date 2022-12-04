@@ -17,13 +17,14 @@ variable "registry" {
 app "slsa-and-guac-app" {
     build {
         use "docker-pull" {
-            image     = "nginx"
+            image     = "gcr.io/hashitalks-2022/slsa-and-guac"
             tag        = "latest"
+            disable_entrypoint = true
         }
         registry {
             use "docker" {
-                image     = "nginx"
-                tag        = "latest"
+                image     = "gcr.io/hashitalks-2022/slsa-and-guac"
+                tag       = "latest"
             }
         }
     }
