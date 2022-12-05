@@ -5,7 +5,7 @@ on:
     branches:
       - 'main'
 env:
-  IMAGE_REGISTRY: hanabyte
+  IMAGE_REGISTRY: docker.io/hanabyte
   IMAGE_NAME: hashitalks-2022
 
 jobs:
