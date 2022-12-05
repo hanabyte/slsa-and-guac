@@ -30,16 +30,9 @@ variable docker_password {
 app "slsa-and-guac-app" {
     build {
         use "docker-pull" {
-            image     = var.image
-            tag       = "latest"
-        }
-        registry {
-            use "docker" {
-                image    = var.image
-                tag      = "latest"
-                username = var.docker_username
-                password = var.docker_password
-            }
+            disable_entrypoint = true
+            image              = var.image
+            tag                = "latest"
         }
     }
     deploy {
