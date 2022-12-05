@@ -2,7 +2,7 @@ project = "slsa-and-guac"
 
 variable "registry" {
     type = string
-    default = "gcr.io/hashitalks-2022"
+    default = "hanabyte/hashitalks-2022/slsa-and-guac"
 }
 
 variable "docker_username" {
@@ -23,27 +23,8 @@ variable docker_password {
 #}
 
 app "slsa-and-guac-app" {
-    build {
-        use "docker" {}
-        registry {
-            use "docker" {
-                image     = "hanabyte/hashitalks-2022/slsa-and-guac"
-                tag       = "latest"
-                username = var.docker_username
-                password = var.docker_password
-            }
-        }
-    }
     deploy {
         use "kubernetes" {
         }
     }
-    #release {
-    #use "kubernetes" {
-    #  ingress {
-    #    //The following field was skipped during file generation
-    #    tls = ""
-    #  }
-    #}
-    #}
 }
