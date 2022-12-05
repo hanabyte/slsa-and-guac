@@ -33,7 +33,8 @@ jobs:
         with:
           push: true
           tags: hanabyte/hashitalks-2022:latest
-      - uses: hashicorp/action-setup-waypoint
+      -
+        name: Deploy
+        uses: hashicorp/action-setup-waypoint
         with:
-        version: '0.1.0'
-  - run: waypoint init
+          version: '0.1.0'
