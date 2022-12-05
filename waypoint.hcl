@@ -35,7 +35,6 @@ app "slsa-and-guac-app" {
         }
         registry {
             use "docker" {
-                serverAddress = var.serverAddress
                 image    = var.image
                 tag      = "latest"
                 username = var.docker_username
