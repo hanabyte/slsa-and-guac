@@ -2,8 +2,7 @@ name: ci
 
 on:
   push:
-    branches:
-      - 'main'
+
 env:
   IMAGE_REGISTRY: hanabyte
   IMAGE_NAME: hashitalks-2022
