@@ -4,9 +4,15 @@ on:
   push:
     branches:
       - 'main'
+env:
+  IMAGE_REGISTRY: hanabyte
+  IMAGE_NAME: hashitalks-2022
 
 jobs:
   build:
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
     outputs:
       image: ${{ steps.image.outputs.image }}
