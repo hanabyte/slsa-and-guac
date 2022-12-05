@@ -7,7 +7,7 @@ on:
 
 env:
   WAYPOINT_SERVER_TOKEN: ${{ secrets.WAYPOINT_SERVER_TOKEN }}
-  WAYPOINT_SERVER_ADDR: hashitalks.hanabyte.com:9701
+  WAYPOINT_SERVER_ADDR: "hashitalks.hanabyte.com:9701"
   WAYPOINT_SERVER_TLS: 1
   WAYPOINT_SERVER_TLS_SKIP_VERIFY: 1
 
@@ -33,8 +33,3 @@ jobs:
         with:
           push: true
           tags: hanabyte/hashitalks-2022:latest
-      -
-        name: Deploy
-        uses: hashicorp/action-setup-waypoint
-        with:
-          version: '0.1.0'
