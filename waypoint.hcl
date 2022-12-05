@@ -30,7 +30,7 @@ variable docker_password {
 app "slsa-and-guac-app" {
     build {
         use "docker-pull" {
-            image     = var.registry
+            image     = var.image
             tag       = "latest"
         }
         registry {
