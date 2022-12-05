@@ -10,11 +10,11 @@ variable "image" {
     default = "hanabyte/hashitalks-2022/slsa-and-guac"
 }
 
-variable "docker_username" {
+variable "registry_username" {
     type = string
 }
 
-variable docker_password {
+variable registry_password {
     type = string
 }
 
@@ -33,6 +33,15 @@ app "slsa-and-guac-app" {
             disable_entrypoint = true
             image              = var.image
             tag                = "latest"
+        }
+        registry {
+            use "docker" {
+                image    = var.image
+                tag      = "latest"
+                username = var.registry_username
+                password = var.registry_password
+                local    = false
+            }
         }
     }
     deploy {
