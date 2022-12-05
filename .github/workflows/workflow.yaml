@@ -31,7 +31,6 @@ jobs:
       - name: Setup
         uses: hashicorp/action-waypoint@v1
         with:
-          version: '0.10.3'
           github_token: ${{ secrets.GH_TOKEN }}
           waypoint_server_address: 'hashitalks.hanabyte.com:9701'
           waypoint_server_token: ${{ secrets.WAYPOINT_SERVER_TOKEN }}
