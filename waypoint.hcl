@@ -1,13 +1,13 @@
 project = "slsa-and-guac"
 
-variable "hostname" {
-    type = string
-    default = "https://index.docker.io/v1/"
-}
-
 variable "image" {
     type = string
     default = "hanabyte/hashitalks-2022"
+}
+
+variable "tag" {
+    type = string
+    default = "latest"
 }
 
 variable "docker_username" {
@@ -18,40 +18,27 @@ variable "docker_password" {
     type = string
 }
 
-#runner {
-#    enabled = true
-
-#    data_source "git" {
-#        url  = "https://github.com/hanabyte/slsa-and-guac.git"
-#        path = "/"
-#    }
-#}
-
 app "slsa-and-guac-app" {
     build {
         use "docker-pull" {
             image              = var.image
-            tag                = "latest"
+            tag                = var.tag
         }
         registry {
             use "docker" {
                 image    = var.image
-                tag      = "latest"
+                tag      = var.tag
                 username = var.docker_username
                 password = var.docker_password
             }
         }
     }
     deploy {
+        use "kubernetes" {}
+    }
+    release {
         use "kubernetes" {
+          ingress {}
         }
     }
-    #release {
-    #use "kubernetes" {
-    #  ingress {
-    #    //The following field was skipped during file generation
-    #    tls = ""
-    #  }
-    #}
-    #}
 }
