@@ -2,12 +2,12 @@ project = "slsa-and-guac"
 
 variable "image" {
   type    = string
-  default = "hanabyte/hashitalks-2022"
+  default = "ghcr.io/hanabyte/slsa-and-guac"
 }
 
 variable "tag" {
   type    = string
-  default = "latest"
+  default = "main"
 }
 
 variable "docker_username" {
