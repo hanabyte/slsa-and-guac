@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: hashitalks
-          image: gcr.io/hashitalks-2022/slsa-and-guac:latest
+          image: hanabyte/hashitalks-2022:latest
           ports:
             - name: http
               containerPort: 80
