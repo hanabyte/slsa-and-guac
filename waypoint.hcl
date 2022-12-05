@@ -2,7 +2,7 @@ project = "slsa-and-guac"
 
 variable "hostname" {
     type = string
-    default = "hanabyte/hashitalks-2022/slsa-and-guac"
+    default = "https://index.docker.io/v1/"
 }
 
 variable "image" {
@@ -35,10 +35,11 @@ app "slsa-and-guac-app" {
         }
         registry {
             use "docker" {
+                serverAddress = var.serverAddress
                 image    = var.image
                 tag      = "latest"
                 username = var.docker_username
-                identityToken = var.docker_password
+                password = var.docker_password
             }
         }
     }
