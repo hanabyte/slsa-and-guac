@@ -32,3 +32,18 @@ jobs:
         run: |
           image_name="${IMAGE_REGISTRY}/${IMAGE_NAME}"
           echo "image=$image_name" >> "$GITHUB_OUTPUT"
+      # This step calls the container workflow to generate provenance and push it to
+      # the container registry.
+  provenance:
+    needs: [ build ]
+    permissions:
+      actions: read # for detecting the Github Actions environment.
+      id-token: write # for creating OIDC tokens for signing.
+      packages: write # for uploading attestations.
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_container_slsa3.yml@v1.4.0
+    with:
+      image: ${{ needs.build.outputs.image }}
+      digest: ${{ needs.build.outputs.digest }}
+      registry-username: ${{ github.actor }}
+    secrets:
+      registry-password: ${{ secrets.GH_TOKEN }}
