@@ -29,10 +29,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
       - name: Setup
-        uses: hashicorp/action-waypoint@main
+        uses: hashicorp/action-waypoint@v1
         with:
-          version: '0.0.1-beta1'
+          version: '0.10.3'
           github_token: ${{ secrets.GH_TOKEN }}
           waypoint_server_address: 'hashitalks.hanabyte.com:9701'
-          waypoint_server_ui: 'https://hashitalks.hanabyte.com:9702'
           waypoint_server_token: ${{ secrets.WAYPOINT_SERVER_TOKEN }}
