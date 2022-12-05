@@ -36,9 +36,4 @@ app "slsa-and-guac-app" {
     deploy {
         use "kubernetes" {}
     }
-    release {
-        use "kubernetes" {
-          ingress {}
-        }
-    }
 }
