@@ -40,7 +40,7 @@ app "slsa-and-guac-app" {
                 tag      = "latest"
                 username = var.docker_username
                 password = var.docker_password
-                local    = false
+                local    = true
             }
         }
     }
