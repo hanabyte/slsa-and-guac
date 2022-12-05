@@ -29,7 +29,7 @@ app "slsa-and-guac-app" {
             tag       = "latest"
         }
         registry {
-            use "docker-pull" {
+            use "docker" {
                 image     = var.registry
                 tag       = "latest"
                 username = var.docker_username
