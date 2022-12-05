@@ -7,7 +7,7 @@ variable "hostname" {
 
 variable "image" {
     type = string
-    default = "hanabyte/hashitalks-2022/slsa-and-guac"
+    default = "hanabyte/hashitalks-2022"
 }
 
 variable "docker_username" {
@@ -29,9 +29,17 @@ variable "docker_password" {
 
 app "slsa-and-guac-app" {
     build {
-        use "docker-ref" {
+        use "docker-pull" {
             image              = var.image
             tag                = "latest"
+        }
+        registry {
+            use "docker" {
+                image    = var.image
+                tag      = "latest"
+                username = var.docker_username
+                password = var.docker_password
+            }
         }
     }
     deploy {
