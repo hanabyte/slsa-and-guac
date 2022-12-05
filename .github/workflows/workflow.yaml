@@ -4,8 +4,8 @@ on:
   push:
 
 env:
-  IMAGE_REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_REGISTRY: hanabyte
+  IMAGE_NAME: hashitalks-2022
 
 jobs:
   build:
@@ -23,8 +23,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: ${{ env.IMAGE_REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@69f6fc9d46f2f8bf0d5491e4aabe0bb8c6a4678a # v4.0.1
