@@ -5,6 +5,14 @@ variable "registry" {
     default = "gcr.io/hashitalks-2022"
 }
 
+variable "docker_username" {
+    type = string
+}
+
+variable docker_password {
+    type = string
+}
+
 #runner {
 #    enabled = true
 
@@ -19,8 +27,10 @@ app "slsa-and-guac-app" {
         use "docker" {}
         registry {
             use "docker" {
-                image     = "gcr.io/hashitalks-2022/slsa-and-guac"
+                image     = "hanabyte/hashitalks-2022/slsa-and-guac"
                 tag       = "latest"
+                username  = var.docker_username
+                password  = var.docker_password
             }
         }
     }
