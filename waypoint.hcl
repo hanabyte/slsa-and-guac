@@ -39,7 +39,6 @@ app "slsa-and-guac-app" {
                 image    = var.image
                 tag      = "latest"
                 username = var.docker_username
-                identityToken = var.docker_password
             }
         }
     }
