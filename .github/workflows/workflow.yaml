@@ -6,8 +6,11 @@ on:
       - 'main'
 
 jobs:
-  build_docker:
+  build:
     runs-on: ubuntu-latest
+    outputs:
+      image: ${{ steps.image.outputs.image }}
+      digest: ${{ steps.build.outputs.digest }}
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
@@ -20,17 +23,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v3
+        id: build
         with:
           push: true
           tags: hanabyte/hashitalks-2022:latest
-  waypoint-init:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-      - name: Setup
-        uses: hashicorp/action-waypoint@v1
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          waypoint_server_address: 'hashitalks.hanabyte.com:9701'
-          waypoint_server_token: ${{ secrets.WAYPOINT_SERVER_TOKEN }}
+      - name: Output image
+        id: image
+        run: |
+          image_name="${IMAGE_REGISTRY}/${IMAGE_NAME}"
+          echo "image=$image_name" >> "$GITHUB_OUTPUT"
