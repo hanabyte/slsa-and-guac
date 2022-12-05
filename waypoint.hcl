@@ -24,9 +24,9 @@ variable docker_password {
 
 app "slsa-and-guac-app" {
     build {
-        use "docker" {}
+        use "docker-pull" {}
         registry {
-            use "docker" {
+            use "docker-pull" {
                 image     = var.registry
                 tag       = "latest"
                 username = var.docker_username
