@@ -29,8 +29,10 @@ app "slsa-and-guac-app" {
             use "docker" {
                 image     = "hanabyte/hashitalks-2022/slsa-and-guac"
                 tag       = "latest"
-                username  = var.docker_username
-                password  = var.docker_password
+                auth {
+                    username = var.docker_username
+                    password = var.docker_password
+                }
             }
         }
     }
