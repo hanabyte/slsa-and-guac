@@ -1,6 +1,11 @@
 project = "slsa-and-guac"
 
-variable "registry" {
+variable "hostname" {
+    type = string
+    default = "hanabyte/hashitalks-2022/slsa-and-guac"
+}
+
+variable "image" {
     type = string
     default = "hanabyte/hashitalks-2022/slsa-and-guac"
 }
@@ -30,10 +35,11 @@ app "slsa-and-guac-app" {
         }
         registry {
             use "docker" {
-                image     = var.registry
-                tag       = "latest"
+                hostname = var.hostname
+                image    = var.image
+                tag      = "latest"
                 username = var.docker_username
-                password = var.docker_password
+                identityToken = var.docker_password
             }
         }
     }
