@@ -5,15 +5,15 @@ on:
     branches:
       - 'main'
 
-jobs:
-  docker:
-    runs-on: ubuntu-latest
-    env:
-      WAYPOINT_SERVER_TOKEN: ${{ secrets.WAYPOINT_SERVER_TOKEN }}
-      WAYPOINT_SERVER_ADDR: hashitalks.hanabyte.com:9701
-      WAYPOINT_SERVER_TLS: 1
-      WAYPOINT_SERVER_TLS_SKIP_VERIFY: 1
+env:
+  WAYPOINT_SERVER_TOKEN: ${{ secrets.WAYPOINT_SERVER_TOKEN }}
+  WAYPOINT_SERVER_ADDR: hashitalks.hanabyte.com:9701
+  WAYPOINT_SERVER_TLS: 1
+  WAYPOINT_SERVER_TLS_SKIP_VERIFY: 1
 
+jobs:
+  slsa_guac:
+    runs-on: ubuntu-latest
     steps:
       -
         name: Set up QEMU
