@@ -26,12 +26,10 @@ jobs:
   waypoint-init:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: hashicorp/action-waypoint
-        name: Setup
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Setup
+        uses: hashicorp/action-setup-waypoint@main
         with:
-          version: '0.0.1-beta1'
-          waypoint_server_address: 'hashitalks.hanabyte.com:9701'
-          waypoint_server_ui: 'https://hashitalks.hanabyte.com:9702'
-          waypoint_server_token: ${{ secrets.WAYPOINT_SERVER_TOKEN }}
-          workspace: default
+          version: '0.1.3'
+      - run: waypoint init
